@@ -1,0 +1,14 @@
+version: '2'
+services:
+    androidserver-app:
+        image: androidserver
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://androidserver-postgresql:5432/AndroidServer
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    androidserver-postgresql:
+        extends:
+            file: postgresql.yml
+            service: androidserver-postgresql
